@@ -16,7 +16,7 @@ function validateSmtpEnv() {
   }
 }
 
-export default async function handler(req, res) {
+export default async function handler(req: { method: string; body: any; }, res: { setHeader: (arg0: string, arg1: string) => void; status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error?: string; success?: boolean; message?: string; }): any; new(): any; }; }; }) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ error: "Method not allowed" });
